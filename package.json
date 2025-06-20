@@ -25,6 +25,7 @@
     "eslint-config-prettier": "^10.1.5",
     "eslint-plugin-unused-imports": "^4.1.4",
     "prettier": "^3.5.3",
+    "prettier-eslint": "^16.4.2",
     "prettier-eslint-cli": "^8.0.1",
     "prettier-plugin-organize-imports": "^4.1.0",
     "typescript": "^5"
