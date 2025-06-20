@@ -1,0 +1,45 @@
+@use "./variables.scss" as *;
+
+body {
+  padding: 20px 40px;
+
+  font-family: Helvetica, Arial, sans-serif;
+
+  background-color: $grey-900;
+  color: $white-85;
+}
+
+a {
+  color: $primary-500;
+
+  &:hover {
+    color: $primary-400;
+  }
+
+  &:visited {
+    color: $primary-600;
+  }
+}
+
+button {
+  padding: 10px;
+  min-width: 100px;
+
+  border-radius: 5px;
+  border: none;
+
+  background: $primary-500;
+  color: $white-85;
+
+  font-weight: bold;
+
+  cursor: pointer;
+
+  &:hover {
+    background: $primary-400;
+  }
+
+  &:active {
+    background: $primary-600;
+  }
+}
