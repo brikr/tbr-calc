@@ -1,14 +1,6 @@
+import { Buff, Item, StatModifier } from "@/types/item";
 import { parse } from "@fast-csv/parse";
 import { JSDOM } from "jsdom";
-
-interface Item {
-  name: string;
-  iconUrl: string;
-  rarity: string;
-  level: number;
-  restriction?: string;
-  description: string;
-}
 
 const CSV_PATH =
   "https://raw.githubusercontent.com/TheBlackRoad-RPG/TheBlackRoad-RPG.github.io/refs/heads/master/data/item_data.csv";
@@ -39,24 +31,41 @@ function processItemRow(row: any): Item | undefined {
     return undefined;
   }
 
-  parseStatIncreases(row.tooltip);
-
   return {
     name: stripHtml(row.name),
     iconUrl: row.path,
     rarity: row.rarity,
     level: Number(row.level),
     restriction: row.restriction !== "NA" ? row.restriction : undefined,
-    description: stripHtml(row.tooltip)
+    description: stripHtml(row.tooltip),
+    stats: parseStatModifiers(row.tooltip),
+    buffs: parseBuffs(row.tooltip)
   };
 }
 
-const STAT_INCREASE_SENTENCE = /^Increases ([\w ]+ by [\d\.]+%?(,?( and )?)?)+/;
+const STAT_INCREASE_SENTENCE =
+  /^Increases (([\w, ]+ by [\d\.]+%?([\w ]+)?(,?( and )?)?)+)(\.| and )/;
+const STAT_INCREASE_TOKEN = /([A-Z][A-Za-z, ]+?) (?:by )?([\d\.]+%?)/g;
 
-function parseStatIncreases(tooltip: string) {
+function parseStatModifiers(tooltip: string): Array<StatModifier> {
   const match = tooltip.match(STAT_INCREASE_SENTENCE);
   const statIncreaseSentence = match?.[1];
-  console.log(tooltip, statIncreaseSentence);
+
+  if (statIncreaseSentence) {
+    const statIncreaseMatches =
+      statIncreaseSentence.matchAll(STAT_INCREASE_TOKEN);
+    for (const match of statIncreaseMatches) {
+      const name = match[1];
+      const amount = match[2];
+      console.log(name);
+    }
+  }
+
+  return [];
+}
+
+function parseBuffs(tooltip: string): Array<Buff> {
+  return [];
 }
 
 function shouldProcess(row: any): boolean {
