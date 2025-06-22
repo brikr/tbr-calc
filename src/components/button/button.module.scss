@@ -1,0 +1,22 @@
+.button {
+  padding: 10px;
+  min-width: 100px;
+
+  border-radius: 5px;
+  border: none;
+
+  background: $primary-500;
+  color: $white-85;
+
+  font-weight: bold;
+
+  cursor: pointer;
+
+  &:hover {
+    background: $primary-400;
+  }
+
+  &:active {
+    background: $primary-600;
+  }
+}

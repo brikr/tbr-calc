@@ -8,7 +8,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier-eslint \"$(pwd)/**/*.{js,jsx,ts,tsx}\" --write"
+    "format": "prettier-eslint \"$(pwd)/**/*.{js,jsx,ts,tsx}\" --write",
+    "generate-items-json": "tsx src/data/generate-items-json.ts"
   },
   "dependencies": {
     "next": "15.3.4",
@@ -17,6 +18,8 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@fast-csv/parse": "^5.0.2",
+    "@types/jsdom": "^21.1.7",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
@@ -24,11 +27,13 @@
     "eslint-config-next": "15.3.4",
     "eslint-config-prettier": "^10.1.5",
     "eslint-plugin-unused-imports": "^4.1.4",
+    "jsdom": "^26.1.0",
     "prettier": "^3.5.3",
     "prettier-eslint": "^16.4.2",
     "prettier-eslint-cli": "^8.0.1",
     "prettier-plugin-organize-imports": "^4.1.0",
     "sass": "^1.89.2",
+    "tsx": "^4.20.3",
     "typescript": "^5"
   }
 }
