@@ -21,19 +21,21 @@ export interface Buff {
 }
 
 export enum Stat {
-  "Agility",
-  "Armor",
-  "Attack Damage",
-  "Attack Speed",
-  "Health",
-  "Health Regeneration",
-  "Intelligence",
-  "Mana",
-  "Mana Regeneration",
-  "Movement Speed",
-  "Resist",
-  "Spell Damage",
-  "Spell Healing",
-  "Spell Power",
-  "Strength"
+  "Agility" = "Agility",
+  "Armor" = "Armor",
+  "Attack Damage" = "Attack Damage",
+  "Attack Speed" = "Attack Speed",
+  "Health" = "Health",
+  "Health Regeneration" = "Health Regeneration",
+  "Intelligence" = "Intelligence",
+  "Mana" = "Mana",
+  "Mana Regeneration" = "Mana Regeneration",
+  "Movement Speed" = "Movement Speed",
+  "Resist" = "Resist",
+  "Spell Damage" = "Spell Damage",
+  "Spell Healing" = "Spell Healing",
+  "Spell Power" = "Spell Power",
+  "Strength" = "Strength"
 }
+
+export const STAT_NAMES = Object.values(Stat).map(String);
